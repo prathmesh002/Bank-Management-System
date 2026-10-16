@@ -27,8 +27,16 @@ SECRET_KEY = 'django-insecure-#!s4@)wc97e-f8v5_7*z9fc)^j=qk1tp4ty#r12&%z8or9yhx4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://bank_management_system.onrender.com",
+]
+
+ALLOWED_HOSTS = [
+    "bank_management_system.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 # Application definition
 
