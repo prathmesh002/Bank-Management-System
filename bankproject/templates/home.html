@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDFC Bank</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f6fc;
+            color: #24334b;
+        }
+        nav {
+            background: #103d78;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 7px;
+            font-size: 14px;
+        }
+        nav a:hover { color: #9bd2ff; }
+        .brand { font-size: 23px; font-weight: bold; color: white; }
+        .hero {
+            text-align: center;
+            padding: 65px 20px;
+            background: linear-gradient(135deg, #dcecff, #ffffff);
+        }
+        .hero h1 { color: #103d78; font-size: 40px; }
+        .hero p { font-size: 18px; }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            max-width: 1050px;
+            margin: 30px auto;
+            padding: 15px;
+        }
+        .service {
+            background: white;
+            padding: 25px 15px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #00000010;
+        }
+        .service a {
+            display: inline-block;
+            background: #1769e0;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        footer {
+            background: #103d78;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin-top: 35px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="brand">🏦 SDFC Bank</div>
+        <div>
+            <a href="{% url 'homepage' %}">Home</a>
+            <a href="{% url 'addaccounts' %}">Add Account</a>
+            <a href="{% url 'balance' %}">Balance</a>
+            <a href="{% url 'withdraw' %}">Withdraw</a>
+            <a href="{% url 'deposite' %}">Deposit</a>
+            <a href="{% url 'transfer' %}">Transfer</a>
+            <a href="{% url 'close' %}">Close Account</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Welcome to SDFC Bank</h1>
+        <p>Your Trust, Our Priority</p>
+        <p>Secure and simple banking services for a better tomorrow.</p>
+    </section>
+
+    <section class="services">
+        <div class="service">
+            <h2>👤</h2>
+            <h3>Create Account</h3>
+            <p>Open your bank account.</p>
+            <a href="{% url 'addaccounts' %}">Get Started</a>
+        </div>
+        <div class="service">
+            <h2>💰</h2>
+            <h3>Check Balance</h3>
+            <p>View your account balance.</p>
+            <a href="{% url 'balance' %}">Check Balance</a>
+        </div>
+        <div class="service">
+            <h2>📤</h2>
+            <h3>Withdraw</h3>
+            <p>Withdraw money from your account.</p>
+            <a href="{% url 'withdraw' %}">Withdraw</a>
+        </div>
+        <div class="service">
+            <h2>📥</h2>
+            <h3>Deposit</h3>
+            <p>Add money to your account.</p>
+            <a href="{% url 'deposite' %}">Deposit</a>
+        </div>
+        <div class="service">
+            <h2>🔄</h2>
+            <h3>Transfer</h3>
+            <p>Transfer money between accounts.</p>
+            <a href="{% url 'transfer' %}">Transfer</a>
+        </div>
+        <div class="service">
+            <h2>🔒</h2>
+            <h3>Close Account</h3>
+            <p>Close an account with zero balance.</p>
+            <a href="{% url 'close' %}">Close Account</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 SDFC Bank. All rights reserved.</p>
+    </footer>
+</body>
+</html>

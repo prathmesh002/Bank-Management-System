@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | SDFC Bank</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: #edf3fb;
+            margin: 0;
+            color: #26364b;
+        }
+        nav {
+            background: #103d78;
+            padding: 18px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 8px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px #00000012;
+        }
+        h1 { text-align: center; color: #103d78; }
+        form p { margin-bottom: 18px; }
+        label { font-weight: bold; }
+        input, select, textarea {
+            width: 100%;
+            padding: 11px;
+            margin-top: 7px;
+            border: 1px solid #ccd6e4;
+            border-radius: 6px;
+        }
+        button {
+            width: 100%;
+            padding: 13px;
+            background: #1769e0;
+            color: white;
+            border: 0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover { background: #103d78; }
+        .message {
+            background: #e3f8eb;
+            color: #17643a;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        .errors { color: #c62828; }
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            color: #1769e0;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'homepage' %}">Home</a>
+        <a href="{% url 'balance' %}">Balance</a>
+        <a href="{% url 'deposite' %}">Deposit</a>
+        <a href="{% url 'transfer' %}">Transfer</a>
+    </nav>
+
+    <div class="container">
+        <h1>🏦 Create New Account</h1>
+
+        {% if message %}
+            <div class="message">{{ message }}</div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Create Account</button>
+        </form>
+
+        <a class="back" href="{% url 'homepage' %}">← Back to Home</a>
+    </div>
+</body>
+</html>

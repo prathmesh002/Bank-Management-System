@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Balance | SDFC Bank</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #edf3fb; margin: 0; }
+        nav { background: #103d78; padding: 18px; text-align: center; }
+        nav a { color: white; text-decoration: none; margin: 10px; }
+        .container {
+            max-width: 600px; margin: 40px auto; background: white;
+            padding: 30px; border-radius: 12px;
+            box-shadow: 0 5px 20px #00000012;
+        }
+        h1 { color: #103d78; text-align: center; }
+        label { font-weight: bold; }
+        input { width: 100%; padding: 11px; margin-top: 7px; border: 1px solid #ccd6e4; border-radius: 6px; }
+        form p { margin-bottom: 18px; }
+        button { width: 100%; padding: 12px; background: #1769e0; color: white; border: 0; border-radius: 6px; cursor: pointer; }
+        .message { background: #e3f8eb; padding: 12px; margin: 15px 0; border-radius: 6px; }
+        .details { background: #f5f8fd; padding: 18px; border-radius: 8px; margin-top: 20px; overflow-wrap: anywhere; }
+        .details p { border-bottom: 1px solid #dce3ed; padding-bottom: 8px; }
+        a.back { display: block; text-align: center; margin-top: 18px; color: #1769e0; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'homepage' %}">Home</a>
+        <a href="{% url 'addaccounts' %}">Add Account</a>
+        <a href="{% url 'withdraw' %}">Withdraw</a>
+        <a href="{% url 'deposite' %}">Deposit</a>
+    </nav>
+
+    <div class="container">
+        <h1>💰 Check Account Balance</h1>
+
+        {% if message %}
+            <div class="message">{{ message }}</div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Check Balance</button>
+        </form>
+
+        {% if account %}
+            <div class="details">
+                <h3>Account Details</h3>
+                <p><strong>Account Number:</strong> {{ account.acc_number }}</p>
+                <p><strong>Name:</strong> {{ account.name }}</p>
+                <p><strong>Current Balance:</strong> ₹{{ account.amount|floatformat:2 }}</p>
+                <p><strong>Address:</strong> {{ account.address }}</p>
+                <p><strong>Mobile Number:</strong> {{ account.mobile_no }}</p>
+            </div>
+        {% endif %}
+
+        <a class="back" href="{% url 'homepage' %}">← Back to Home</a>
+    </div>
+</body>
+</html>
